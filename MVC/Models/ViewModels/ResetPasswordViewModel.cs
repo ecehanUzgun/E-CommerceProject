@@ -12,13 +12,13 @@ namespace MVC.Models.AccountVM
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Yeni şifre gereklidir.")]
-        [StringLength(100, ErrorMessage = "Şifre en az {2} karakter uzunluğunda olmalıdır.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Şifre en az {2} karakter uzunluğunda olmalıdır.", MinimumLength = 3)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Şifre onayı gereklidir.")]
+        [Required(ErrorMessage = "Şifre (Tekrar) gereklidir.")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Şifre ve şifre onayı eşleşmiyor.")]
+        [Compare("Password", ErrorMessage = "Şifreler eşleşmiyor.")]
         public string ConfirmPassword { get; set; }
     }
 }

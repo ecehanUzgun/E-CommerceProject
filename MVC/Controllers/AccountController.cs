@@ -129,13 +129,13 @@ namespace MVC.Controllers
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
-                return RedirectToAction(nameof(ResetPasswordConfirmation));
+                return RedirectToAction("Register");
             }
 
             var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password); //Sunucu gelen Token'ı doğrular.
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(ResetPasswordConfirmation));
+                return RedirectToAction("ResetPasswordConfirmation");
             }
 
             foreach (var error in result.Errors)
@@ -171,7 +171,7 @@ namespace MVC.Controllers
 
                 // Şifre sıfırlamak için token
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var callBackUrl = Url.Action(nameof(ResetPassword), "Account", new { token, email = model.Email }, Request.Scheme);
+                var callBackUrl = Url.Action("ResetPassword", "Account", new { token, email = model.Email }, Request.Scheme);
 
                 ViewBag.ResetLink = callBackUrl;
 
