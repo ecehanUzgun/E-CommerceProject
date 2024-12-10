@@ -1,0 +1,94 @@
+﻿@model CategoryViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Dashboard/Views/Shared/_DashboardLayout.cshtml";
+}
+
+
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        <span>@TempData["Success"]</span>
+    </div>
+}
+
+
+<div class="row">
+    <div class="card mb-4">
+        <div class="card-header">
+           <div class="d-flex justify-content-between">
+                <div>
+                    <i class="fas fa-table me-1"></i>
+                    Kategori Listesi
+                </div>
+
+            <a asp-action="Create" asp-controller="Category" class="btn btn-success">Yeni Kategori</a>
+           </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.ActiveCategories)
+                    {
+                        <tr>
+                        <td>@item.ID</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.Description</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">delete</a>
+                                <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-sm btn-warning">update</a>
+                    </td>
+                      </tr>
+                    }
+                   
+
+                </tbody>
+            </table>
+            
+            <hr />
+
+            <h4>Pasif Kategoriler</h4>
+
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+
+               <tbody>
+
+                   @foreach (var item in Model.PassiveCategories)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.Description</td>
+                            <th></th>
+                        </tr>
+                    }
+
+                  
+
+                   </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+

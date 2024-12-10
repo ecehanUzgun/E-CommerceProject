@@ -1,0 +1,9 @@
+-- Ege: Tasarım desenlerinden Factory ile Abstract Factory desenini uygulamalı olarak anlat. 
+
+--Abdurrahman: Dependency Resolvers ile Dependency Injection arasındaki farkı uygulamalı olarak anlat.
+
+--Ece: Middleware ile Pipeline çalışma mantığını uygulamalı olarak anlat.
+
+--Cumartesi ve Pazar günleri saat 14:30 - 15:00 arasında sunum gerçekleştirilecek. 
+
+

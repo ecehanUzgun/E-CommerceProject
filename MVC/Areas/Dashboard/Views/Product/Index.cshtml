@@ -1,0 +1,62 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Dashboard/Views/Shared/_DashboardLayout.cshtml";
+    var imageUrl = "https://localhost:7241/images/products/";
+}
+
+<div class="row">
+    <div class="card mb-4">
+        <div class="card-header">
+           <div class="d-flex justify-content-between">
+                <div>
+                    <i class="fas fa-table me-1"></i>
+                    Ürün Listesi
+                </div>
+
+            <a asp-action="Create" asp-controller="Product" class="btn btn-success">Yeni Ürün</a>
+           </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                           
+                        </th>
+                        <th>Product Id</th>
+                        <th>Product Name</th>
+                        <th>Unit Price</th>
+                        <th>Units In Stock</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                     @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @if (item.ImageURL.Contains("https"))
+                                {
+                                    <img src="@item.ImageURL" width="48" height="48" />
+                                }else
+                                {
+                                    <img src="@imageUrl@item.ImageURL" width="48" height="48" />
+                                }
+                            </td>
+                    <td>@item.ID</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.UnitPrice</td>
+                    <td>
+                    <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">delete</a>
+                    <a asp-action="Update" asp-route-id="@item.ID" class="btn btn-sm btn-warning">update</a>
+                    </td>
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

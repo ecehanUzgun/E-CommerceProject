@@ -1,0 +1,53 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = Layout = "~/Areas/Dashboard/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Urun Oluştur</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                        <label>Urun Ad</label>
+                        <input type="text" class="form-control" asp-for="ProductName" />
+                    </div>
+                    <div>
+                        <label>Urun Fiyat</label>
+                        <input type="number" class="form-control" asp-for="UnitPrice" />
+                    </div>
+                    <div>
+                        <label>Urun Stok</label>
+                        <input type="number" class="form-control" asp-for="UnitsInStock" />
+                    </div>
+                    
+                    <div>
+                        <label>Ürün Açıklama</label>
+                        <textarea cols="5" rows="7" class="form-control" asp-for="Description">
+
+                        </textarea>
+                    </div>
+                    <div>
+                        <label>Kategori</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Ürün Görsel</label>
+                        <input type="file" name="productImage" class="form-control"/>
+                    </div>
+
+                    <button class="btn btn-primary mt-2">Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

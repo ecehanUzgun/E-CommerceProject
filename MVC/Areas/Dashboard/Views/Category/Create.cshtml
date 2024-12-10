@@ -1,0 +1,38 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Dashboard/Views/Shared/_DashboardLayout.cshtml";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        <span>@TempData["Error"]</span>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Kategori Oluştur</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div>
+                        <label>Kategori Ad</label>
+                        <input type="text" class="form-control" asp-for="CategoryName" />
+                    </div>
+                    <div>
+                        <label>Kategori Açıklama</label>
+                        <textarea cols="5" rows="7" class="form-control" asp-for="Description">
+
+                        </textarea>
+                    </div>
+                    <button class="btn btn-primary mt-2">Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
